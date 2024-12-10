@@ -1,30 +1,29 @@
+require 'pry'
+require 'pry-byebug'
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def valid_number?(num)
-  num.to_i() != 0
+  num.to_i.to_s == num || num.to_f.to_s == num
 end
 
 def operation_to_message(op)
-  case op
-  when '1'
-    "Adding"
-  when '2'
-    "Subtracting"
-  when '3'
-    "Multiplying"
-  when '4'
-    "Dividing"
-  end
+  {
+    '1' => "Adding",
+    '2' => "Subtracting",
+    '3' => "Multiplying",
+    '4' => "Dividing"
+  }[op]
 end
 
 prompt("Welcome to the calculator program! Please enter your name:")
 name = nil
 loop do
-  name = Kernel.gets().chomp()
+  name = Kernel.gets.chomp
 
-  if name.empty?()
+  if name.empty?
     prompt("Make sure to use a valid name")
   else
     break
@@ -40,7 +39,7 @@ loop do
   num1 = nil
   loop do
     prompt("Type the first number: ")
-    num1 = Kernel.gets().chomp()
+    num1 = Kernel.gets.chomp
 
     if valid_number?(num1)
       break
@@ -49,10 +48,12 @@ loop do
     end
   end
 
+  #binding.pry
+
   prompt("Type the second number: ")
   num2 = nil
   loop do
-    num2 = Kernel.gets().chomp()
+    num2 = Kernel.gets.chomp
 
     if valid_number?(num2)
       break
@@ -74,7 +75,7 @@ loop do
 
   operation = nil
   loop do
-    operation = Kernel.gets().chomp()
+    operation = Kernel.gets.chomp
     if %w(1 2 3 4).include?(operation)
       break
     else
@@ -84,7 +85,7 @@ loop do
 
   prompt("#{operation_to_message(operation)} the two numbers...")
 
-  result = case operation
+  case operation
   when '1'
     prompt("The result is #{num1.to_i + num2.to_i}")
   when '2'
@@ -98,8 +99,8 @@ loop do
   end
 
   prompt("Do you want to perform another calculation? (Y to calculate again)")
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase().start_with?('y')
+  answer = Kernel.gets.chomp
+  break unless answer.downcase.start_with?('y')
 end
 
 prompt("Thank you for using the calculator. Goodbye!")
