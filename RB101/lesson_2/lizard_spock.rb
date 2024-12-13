@@ -1,9 +1,5 @@
 VALID_CHOICES = ['rock', 'paper', 'scissors']
 
-def test_method
-  prompt_player("test message")
-end
-
 def win?(first, second)
   (first == 'rock' && second == 'scissors') ||
     (first == 'paper' && second == 'rock') ||
@@ -19,28 +15,6 @@ def display_results(player, computer)
     prompt_player("It's a tie!")
   end
 end
-
-# def display_results(player, computer)
-#   if (player == 'rock' && computer == 'scissors') ||
-#      (player == 'paper' && computer == 'rock') ||
-#      (player == 'scissors' && computer == 'paper')
-#     prompt_player("You won!")
-#   elsif (player == 'rock' && computer == 'paper') ||
-#         (player == 'paper' && computer == 'scissors') ||
-#         (player == 'scissors' && computer == 'rock')
-#     prompt_player("Computer won!")
-#   else
-#     prompt_player("It's a tie!")
-#   end
-# end
-
-# test_method
-
-def prompt_player(message)
-  puts "=> #{message}"
-end
-
-test_method
 
 loop do
   prompt_player("Welcome to Rock, Paper, Scissors!")
