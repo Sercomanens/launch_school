@@ -20,3 +20,9 @@ end
 
 new_advice = modified_words.join(" ")
 puts new_advice
+
+
+range = 10..100
+count = range.count do |num|
+  num == 42
+end
