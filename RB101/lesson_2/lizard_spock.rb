@@ -16,6 +16,10 @@ def display_results(player, computer)
   end
 end
 
+def prompt_player(message)
+  puts "=> #{message}"
+end
+
 loop do
   prompt_player("Welcome to Rock, Paper, Scissors!")
   prompt_player("Please enter your choice: #{VALID_CHOICES.join(', ')}")
